@@ -13,5 +13,5 @@ import javax.inject.Singleton
 class RoomDAOModule {
     @Provides
     @Singleton
-    fun providePestDao(db: DigitifyDB): CurrencyRateDao = db.currencyDao()
+    fun provideCurrencyRateDao(db: DigitifyDB): CurrencyRateDao = db.currencyDao()
 }

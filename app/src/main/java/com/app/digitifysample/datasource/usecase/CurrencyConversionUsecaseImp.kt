@@ -45,8 +45,7 @@ class CurrencyConversionUsecaseImp constructor(
     override suspend fun getRatesCount() = repository.getRatesCount()
 
     override fun loadAndSaveCurrencyList() = repository.loadAndSaveCurrencyList()
-    override suspend fun findCurrencyRate(currencyCode: String) =
-        repository.findCurrencyRate(currencyCode)
+    override suspend fun findCurrencyRate(currencyCode: String) = repository.findCurrencyRate(currencyCode)
 
     override fun startSyncConversionRates() {
         workManager.enqueueUniquePeriodicWork(

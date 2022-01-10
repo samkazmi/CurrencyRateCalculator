@@ -15,7 +15,7 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner = "com.app.digitifysample.home.CustomTestRunner"
+        testInstrumentationRunner = "com.app.digitifysample.CustomTestRunner"
        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         javaCompileOptions {
             annotationProcessorOptions {
