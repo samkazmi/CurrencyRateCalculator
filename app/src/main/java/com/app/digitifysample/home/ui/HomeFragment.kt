@@ -197,7 +197,16 @@ class HomeFragment : BaseFragment(), HomeViewCallback {
                     WorkInfo.State.RUNNING -> {
                         showProgress()
                     }
-                    else -> {}
+                    WorkInfo.State.FAILED -> {
+                        hideProgress()
+                        val code = it.last().outputData.getInt("code", 901)
+                        val message =
+                            it.last().outputData.getString("message") ?: "Unable to fetch rate"
+                        onErrorSimple(code, message, RETRY_RATE_TAG)
+                    }
+                    else -> {
+                        hideProgress()
+                    }
                 }
 
         }
