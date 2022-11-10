@@ -5,11 +5,11 @@
 
         <variable
             name="cb"
-            type="com.app.digitifysample.common.callbacks.RecyclerViewItemCallback" />
+            type="com.app.currencyconverter.common.callbacks.RecyclerViewItemCallback" />
 
         <variable
             name="vm"
-            type="com.app.digitifysample.home.vm.ConversionRateItemViewModel" />
+            type="com.app.currencyconverter.home.vm.ConversionRateItemViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"

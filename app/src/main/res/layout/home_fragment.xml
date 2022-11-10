@@ -9,11 +9,11 @@
 
         <variable
             name="vm"
-            type="com.app.digitifysample.home.vm.HomeViewModel" />
+            type="com.app.currencyconverter.home.vm.HomeViewModel" />
 
         <variable
             name="callback"
-            type="com.app.digitifysample.home.callback.HomeViewCallback" />
+            type="com.app.currencyconverter.home.callback.HomeViewCallback" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

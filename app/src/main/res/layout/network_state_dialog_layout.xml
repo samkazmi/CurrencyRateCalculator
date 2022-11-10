@@ -23,7 +23,7 @@
 
         <variable
             name="callback"
-            type="com.app.digitifysample.common.callbacks.NetworkStateDialogCallback" />
+            type="com.app.currencyconverter.common.callbacks.NetworkStateDialogCallback" />
     </data>
 
     <androidx.cardview.widget.CardView

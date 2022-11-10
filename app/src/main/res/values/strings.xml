@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DigitifySample</string>
+    <string name="app_name">Currency Converter</string>
     <string name="currency_converter">Currency Converter</string>
     <string name="currency_amount">Currency Amount</string>
     <string name="enter_amount">Enter Amount</string>
