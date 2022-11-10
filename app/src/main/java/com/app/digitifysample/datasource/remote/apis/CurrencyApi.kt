@@ -6,10 +6,9 @@ import com.app.digitifysample.datasource.models.SupportedCurrencies
 import retrofit2.http.GET
 
 interface CurrencyApi {
-
-    @GET("live")
+    @GET("latest.json")
     suspend fun liveCurrencyRates(): CurrencyRates
 
-    @GET("list")
-    suspend fun supportedCurrencies(): SupportedCurrencies
+    @GET("currencies.json")
+    suspend fun supportedCurrencies(): Map<String, String>
 }

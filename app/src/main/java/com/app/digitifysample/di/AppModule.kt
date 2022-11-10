@@ -69,7 +69,7 @@ class AppModule {
     @Provides
     @Singleton
     internal fun apiKeyAuth(): ApiKeyAuth {
-        val apiKeyAuth = ApiKeyAuth("query", "access_key")
+        val apiKeyAuth = ApiKeyAuth("query", "app_id")
         apiKeyAuth.apiKey = BuildConfig.API_KEY
         return apiKeyAuth
     }

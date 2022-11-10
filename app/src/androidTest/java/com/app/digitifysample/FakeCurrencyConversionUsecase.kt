@@ -91,8 +91,15 @@ class FakeCurrencyConversionUsecase : CurrencyConversionUsecase {
         return dummyRateList.find { it.code == currencyCode }
     }
 
+    override fun updateSyncConversionRates() {
+        startSyncConversionRates()
+    }
 
-    override fun startSyncConversionRates() {
+    override fun forceSyncConversionRates() {
+        startSyncConversionRates()
+    }
+
+    private fun startSyncConversionRates() {
         dummyWorkerLiveData.postValue(listOf())
         dummyWorkerLiveData.postValue(listOf(enqueuedWorkInfo))
         dummyWorkerLiveData.postValue(listOf(runningWorkInfo))

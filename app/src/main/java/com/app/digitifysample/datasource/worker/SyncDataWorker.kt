@@ -25,7 +25,7 @@ class SyncDataWorker
     override suspend fun doWork(): Result {
         try {
             repository.saveCurrencyRates(repository.getCurrencyRatesFromServer())
-            return Result.success(Data.Builder().build())
+            return Result.success()
         } catch (e: Exception) {
             e.printStackTrace()
             return if (e is UnknownHostException

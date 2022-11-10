@@ -45,12 +45,22 @@ class CurrencyConversionUsecaseImp constructor(
     override suspend fun getRatesCount() = repository.getRatesCount()
 
     override fun loadAndSaveCurrencyList() = repository.loadAndSaveCurrencyList()
-    override suspend fun findCurrencyRate(currencyCode: String) = repository.findCurrencyRate(currencyCode)
 
-    override fun startSyncConversionRates() {
+    override suspend fun findCurrencyRate(currencyCode: String) =
+        repository.findCurrencyRate(currencyCode)
+
+    override fun updateSyncConversionRates() {
+        startSyncConversionRates(ExistingPeriodicWorkPolicy.KEEP)
+    }
+
+    override fun forceSyncConversionRates() {
+        startSyncConversionRates(ExistingPeriodicWorkPolicy.REPLACE)
+    }
+
+    private fun startSyncConversionRates(policy: ExistingPeriodicWorkPolicy) {
         workManager.enqueueUniquePeriodicWork(
             SYNC_WORK,
-            ExistingPeriodicWorkPolicy.KEEP,
+            policy,
             PeriodicWorkRequest.Builder(SyncDataWorker::class.java, 30, TimeUnit.MINUTES)
                 .setConstraints(
                     Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()

@@ -23,9 +23,9 @@ class CurrencyRepositoryImp constructor(
 
 
     override suspend fun saveCurrencyRates(c: CurrencyRates) {
-        dao.insertAllRates(c.quotes.map {
+        dao.insertAllRates(c.rates.map {
             CurrencyRateEntity(
-                it.key.removePrefix("USD"),
+                it.key,
                 it.value
             )
         })
@@ -51,8 +51,8 @@ class CurrencyRepositoryImp constructor(
 
     override fun getCurrencyList() = dao.getCurrencyListLive()
 
-    suspend fun saveCurrencyList(c: SupportedCurrencies) {
-        dao.insertAllCurrencies(c.currencies.toList().map {
+    suspend fun saveCurrencyList(currencyMap: Map<String, String>) {
+        dao.insertAllCurrencies(currencyMap.toList().map {
             CurrencyEntity(
                 it.first,
                 it.second
@@ -60,7 +60,9 @@ class CurrencyRepositoryImp constructor(
         })
     }
 
-    override suspend fun getCurrencyListCount() = dao.getCurrencyCount()
+    override suspend fun getCurrencyListCount(): Int {
+       return dao.getCurrencyCount()
+    }
 
 
 }

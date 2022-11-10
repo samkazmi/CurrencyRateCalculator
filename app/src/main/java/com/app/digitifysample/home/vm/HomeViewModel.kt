@@ -13,10 +13,8 @@ import com.app.digitifysample.datasource.models.ConversionRates
 import com.app.digitifysample.datasource.usecase.CurrencyConversionUsecase
 import com.mlykotom.valifi.fields.number.ValiFieldDouble
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.jetbrains.annotations.TestOnly
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,7 +38,7 @@ class HomeViewModel @Inject constructor(
     }
 
 
-    suspend fun shouldLoadCurrencyList() = usecase.getCurrencyListCount() < 0
+    suspend fun shouldLoadCurrencyList() = usecase.getCurrencyListCount() <= 0
 
     fun loadCurrencyList() = usecase.loadAndSaveCurrencyList()
 
@@ -96,7 +94,15 @@ class HomeViewModel @Inject constructor(
     }
 
 
-    fun initOrUpdateSyncWorker() = usecase.startSyncConversionRates()
+    fun initOrUpdateSyncWorker() {
+        viewModelScope.launch {
+            if (usecase.getRatesCount() > 0) {
+                usecase.updateSyncConversionRates()
+            } else {
+                usecase.forceSyncConversionRates()
+            }
+        }
+    }
 
     fun observeSyncWorker() = usecase.getSyncDataWorkerInfo()
 

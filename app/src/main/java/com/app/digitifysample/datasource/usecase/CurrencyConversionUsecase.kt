@@ -26,6 +26,7 @@ interface CurrencyConversionUsecase {
     fun onDestroy()
     suspend fun findCurrencyRate(currencyCode: String): CurrencyRateEntity?
 
-    fun startSyncConversionRates()
+    fun updateSyncConversionRates()
+    fun forceSyncConversionRates()
     fun getSyncDataWorkerInfo(): LiveData<List<WorkInfo>>
 }
