@@ -1,6 +1,6 @@
 package com.app.currencyconverter.di
 
-import com.app.currencyconverter.datasource.local.DigitifyDB
+import com.app.currencyconverter.datasource.local.CurrencyConverterDB
 import com.app.currencyconverter.datasource.local.dao.CurrencyRateDao
 import dagger.Module
 import dagger.Provides
@@ -13,5 +13,5 @@ import javax.inject.Singleton
 class RoomDAOModule {
     @Provides
     @Singleton
-    fun provideCurrencyRateDao(db: DigitifyDB): CurrencyRateDao = db.currencyDao()
+    fun provideCurrencyRateDao(db: CurrencyConverterDB): CurrencyRateDao = db.currencyDao()
 }

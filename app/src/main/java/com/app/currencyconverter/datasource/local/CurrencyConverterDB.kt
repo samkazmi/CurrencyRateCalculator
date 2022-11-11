@@ -10,6 +10,6 @@ import com.app.currencyconverter.datasource.local.entity.CurrencyRateEntity
     entities = [CurrencyEntity::class, CurrencyRateEntity::class],
     version = 1
 )
-abstract class DigitifyDB : RoomDatabase() {
+abstract class CurrencyConverterDB : RoomDatabase() {
     abstract fun currencyDao(): CurrencyRateDao
 }

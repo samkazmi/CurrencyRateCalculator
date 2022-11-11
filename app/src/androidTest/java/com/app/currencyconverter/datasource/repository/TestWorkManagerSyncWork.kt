@@ -12,7 +12,6 @@ import androidx.work.testing.WorkManagerTestInitHelper
 import com.app.currencyconverter.datasource.remote.common.ApiStatus
 import com.app.currencyconverter.datasource.worker.SyncDataWorker
 import com.app.currencyconverter.getOrAwaitValue
-import com.app.currencyconverter.datasource.repository.CurrencyRepository
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.delay
@@ -26,7 +25,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltAndroidTest
-class CurrencyRepositoryImpTest {
+class TestWorkManagerSyncWork {
 
     @get:Rule
     var hiltrule = HiltAndroidRule(this)
@@ -61,14 +60,6 @@ class CurrencyRepositoryImpTest {
     }
 
     @Test
-    fun testRates() = runBlocking {
-        val s = repository.getCurrencyRatesFromServer()
-        assert(s.rates.isNotEmpty())
-        repository.saveCurrencyRates(s)
-        assert(repository.getRatesCount() > 0)
-    }
-
-    @Test
     fun testCurrencyApi() {
         val value = repository.loadAndSaveCurrencyList().getOrAwaitValue()
         when (value.callInfo.status) {
@@ -76,11 +67,6 @@ class CurrencyRepositoryImpTest {
             ApiStatus.SUCCESS -> assert(value.data?.code == 200)
             ApiStatus.ERROR -> assert(value.callInfo.error != null)
         }
-    }
-
-    @Test
-    fun testCurrencyCount() = runBlocking {
-        assert(repository.getCurrencyListCount() > 0)
     }
 
     @Test

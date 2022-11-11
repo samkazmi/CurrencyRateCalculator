@@ -7,7 +7,7 @@ import androidx.work.WorkManager
 import com.app.currencyconverter.BuildConfig
 import com.app.currencyconverter.datasource.remote.ParseErrors
 import com.app.currencyconverter.datasource.remote.ApiKeyAuth
-import com.app.currencyconverter.datasource.local.DigitifyDB
+import com.app.currencyconverter.datasource.local.CurrencyConverterDB
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -92,8 +92,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    internal fun digitifyDb(@ApplicationContext context: Context, gson: Gson): DigitifyDB {
-        return Room.databaseBuilder(context, DigitifyDB::class.java, "digitify_db")
+    internal fun currencyConverterDB(@ApplicationContext context: Context): CurrencyConverterDB {
+        return Room.databaseBuilder(context, CurrencyConverterDB::class.java, "currency_converter_db")
             .build()
     }
 

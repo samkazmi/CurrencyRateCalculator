@@ -6,7 +6,6 @@ import com.app.currencyconverter.datasource.local.dao.CurrencyRateDao
 import com.app.currencyconverter.datasource.local.entity.CurrencyEntity
 import com.app.currencyconverter.datasource.local.entity.CurrencyRateEntity
 import com.app.currencyconverter.datasource.models.CurrencyRates
-import com.app.currencyconverter.datasource.models.SupportedCurrencies
 import com.app.currencyconverter.datasource.remote.ParseErrors
 import com.app.currencyconverter.datasource.remote.apis.CurrencyApi
 import com.app.currencyconverter.datasource.remote.common.LiveResponse
@@ -37,7 +36,7 @@ class CurrencyRepositoryImp constructor(
         return liveData {
             emit(LiveResponse.loading())
             try {
-                val res = api.supportedCurrencies()
+                val res = loadCurrencyList()
                 saveCurrencyList(res)
                 emit(LiveResponse.success(Message(200, "success")))
             } catch (e: Exception) {
@@ -46,13 +45,17 @@ class CurrencyRepositoryImp constructor(
         }
     }
 
+    override suspend fun loadCurrencyList(): Map<String, String> {
+        return api.supportedCurrencies()
+    }
+
     override suspend fun findCurrencyRate(currencyCode: String) = dao.getCurrencyRate(currencyCode)
     override suspend fun getRatesCount() = dao.getRatesCount()
 
     override fun getCurrencyList() = dao.getCurrencyListLive()
 
-    suspend fun saveCurrencyList(currencyMap: Map<String, String>) {
-        dao.insertAllCurrencies(currencyMap.toList().map {
+    override suspend fun saveCurrencyList(map: Map<String, String>) {
+        dao.insertAllCurrencies(map.toList().map {
             CurrencyEntity(
                 it.first,
                 it.second
@@ -61,7 +64,7 @@ class CurrencyRepositoryImp constructor(
     }
 
     override suspend fun getCurrencyListCount(): Int {
-       return dao.getCurrencyCount()
+        return dao.getCurrencyCount()
     }
 
 

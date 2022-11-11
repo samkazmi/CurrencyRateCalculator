@@ -1,5 +1,6 @@
 package com.app.currencyconverter.datasource.local.dao
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.room.Dao
@@ -9,6 +10,7 @@ import androidx.room.Query
 import com.app.currencyconverter.datasource.local.entity.CurrencyEntity
 import com.app.currencyconverter.datasource.local.entity.CurrencyRateEntity
 import kotlinx.coroutines.flow.Flow
+import org.jetbrains.annotations.TestOnly
 
 @Dao
 interface CurrencyRateDao {
@@ -21,6 +23,10 @@ interface CurrencyRateDao {
 
     @Query("SELECT * FROM currencyrateentity")
     fun getAllRates(): Flow<List<CurrencyRateEntity>>
+
+    @VisibleForTesting
+    @Query("SELECT * FROM currencyrateentity")
+    fun getAllRatesList(): List<CurrencyRateEntity>
 
     @Query("SELECT * FROM currencyrateentity")
     fun getAllRatesPaged(): PagingSource<Int, CurrencyRateEntity>
