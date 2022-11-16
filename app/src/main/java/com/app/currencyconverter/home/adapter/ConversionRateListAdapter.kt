@@ -15,7 +15,7 @@ class ConversionRateListAdapter(
     private val callback: RecyclerViewCallback<ConversionRates>
 ) :
     PagingDataAdapter<ConversionRates, ConversionRateListAdapter.ConversionRateViewHolder>(
-        EventComparator
+        ConversionRateComparator
     ) {
 
     override fun onBindViewHolder(holder: ConversionRateViewHolder, position: Int) {
@@ -55,7 +55,7 @@ class ConversionRateListAdapter(
         }
     }
 
-    object EventComparator : DiffUtil.ItemCallback<ConversionRates>() {
+    object ConversionRateComparator : DiffUtil.ItemCallback<ConversionRates>() {
         override fun areItemsTheSame(oldItem: ConversionRates, newItem: ConversionRates): Boolean {
             // Id is unique.
             return oldItem.sourceCurrency == newItem.sourceCurrency

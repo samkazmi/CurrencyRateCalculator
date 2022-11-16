@@ -5,7 +5,7 @@ import android.content.Context
 import androidx.room.Room
 import androidx.work.WorkManager
 import com.app.currencyconverter.BuildConfig
-import com.app.currencyconverter.datasource.remote.ParseErrors
+import com.app.currencyconverter.datasource.utils.ParseErrors
 import com.app.currencyconverter.datasource.remote.ApiKeyAuth
 import com.app.currencyconverter.datasource.local.CurrencyConverterDB
 import com.google.gson.Gson

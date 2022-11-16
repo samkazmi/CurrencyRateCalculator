@@ -5,7 +5,7 @@ import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.Data
 import androidx.work.WorkerParameters
-import com.app.currencyconverter.datasource.remote.ParseErrors
+import com.app.currencyconverter.datasource.utils.ParseErrors
 import com.app.currencyconverter.datasource.repository.CurrencyRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject

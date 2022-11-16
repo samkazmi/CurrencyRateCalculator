@@ -1,4 +1,4 @@
-package com.app.currencyconverter.datasource.remote
+package com.app.currencyconverter.datasource.utils
 
 import android.util.Log
 import com.app.currencyconverter.datasource.remote.common.Message

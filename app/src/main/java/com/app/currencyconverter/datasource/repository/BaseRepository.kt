@@ -1,6 +1,6 @@
 package com.app.currencyconverter.datasource.repository
 
-import com.app.currencyconverter.datasource.remote.ParseErrors
+import com.app.currencyconverter.datasource.utils.ParseErrors
 
 open class BaseRepository(private val parseErrors: ParseErrors) {
 

@@ -9,7 +9,7 @@ import com.app.currencyconverter.datasource.local.dao.CurrencyRateDao
 import com.app.currencyconverter.datasource.local.entity.CurrencyRateEntity
 import com.app.currencyconverter.datasource.models.ConversionRates
 import com.app.currencyconverter.datasource.models.CurrencyRates
-import com.app.currencyconverter.datasource.remote.ParseErrors
+import com.app.currencyconverter.datasource.utils.ParseErrors
 import com.app.currencyconverter.datasource.remote.apis.CurrencyApi
 import com.app.currencyconverter.datasource.repository.CurrencyRepository
 import com.app.currencyconverter.datasource.repository.CurrencyRepositoryImp

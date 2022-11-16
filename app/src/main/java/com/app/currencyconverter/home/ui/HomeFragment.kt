@@ -169,8 +169,12 @@ class HomeFragment : BaseFragment(), HomeViewCallback {
             footer = PagingLoadStateAdapter { adapter.retry() }
         )
         binding.srlRefresh.setOnRefreshListener {
-            vm.updateConversionList()
-            adapter.refresh()
+            if (vm.amount.isValid) {
+                vm.updateConversionList()
+                adapter.refresh()
+            } else {
+                binding.srlRefresh.isRefreshing = false
+            }
         }
 
     }

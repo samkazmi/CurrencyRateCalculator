@@ -10,21 +10,12 @@ import javax.inject.Inject
 @HiltAndroidApp
 class CurrencyApplication : Application(), Configuration.Provider {
 
-    companion object {
-        private var application: CurrencyApplication? = null
-        fun getInstance(): CurrencyApplication? {
-            return application
-        }
-    }
-
     @Inject
     lateinit var workerFactory: HiltWorkerFactory
 
     override fun onCreate() {
         super.onCreate()
         ValiFi.install(applicationContext)
-        application = this
-
     }
 
     override fun getWorkManagerConfiguration() =

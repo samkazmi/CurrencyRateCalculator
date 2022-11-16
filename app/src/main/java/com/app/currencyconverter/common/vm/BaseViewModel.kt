@@ -7,9 +7,8 @@ import kotlinx.coroutines.cancel
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
 
-    fun cancelRequest() {
+    override fun onCleared() {
+        super.onCleared()
         viewModelScope.cancel()
     }
-
-
 }
