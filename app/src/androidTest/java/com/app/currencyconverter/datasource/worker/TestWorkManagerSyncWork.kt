@@ -11,7 +11,6 @@ import androidx.work.testing.TestListenableWorkerBuilder
 import androidx.work.testing.WorkManagerTestInitHelper
 import com.app.currencyconverter.datasource.remote.common.ApiStatus
 import com.app.currencyconverter.datasource.repository.CurrencyRepository
-import com.app.currencyconverter.datasource.worker.SyncDataWorker
 import com.app.currencyconverter.getOrAwaitValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

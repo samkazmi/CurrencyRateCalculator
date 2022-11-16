@@ -9,10 +9,10 @@ import com.app.currencyconverter.datasource.local.dao.CurrencyRateDao
 import com.app.currencyconverter.datasource.local.entity.CurrencyRateEntity
 import com.app.currencyconverter.datasource.models.ConversionRates
 import com.app.currencyconverter.datasource.models.CurrencyRates
-import com.app.currencyconverter.datasource.utils.ParseErrors
 import com.app.currencyconverter.datasource.remote.apis.CurrencyApi
 import com.app.currencyconverter.datasource.repository.CurrencyRepository
 import com.app.currencyconverter.datasource.repository.CurrencyRepositoryImp
+import com.app.currencyconverter.datasource.utils.ParseErrors
 import com.app.currencyconverter.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.Gson
@@ -31,6 +31,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnit
+import org.mockito.junit.MockitoRule
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import retrofit2.Retrofit
@@ -44,10 +45,10 @@ import java.net.HttpURLConnection
 class CurrencyRepositoryTest {
 
     @get:Rule
-    public val testInstantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
+    val testInstantTaskExecutorRule: TestRule = InstantTaskExecutorRule()
 
     @get: Rule
-    public var rule = MockitoJUnit.rule()
+    var rule: MockitoRule = MockitoJUnit.rule()
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var repository: CurrencyRepository
@@ -180,8 +181,8 @@ class CurrencyRepositoryTest {
             repository.saveCurrencyRates(repository.getCurrencyRatesFromServer())
             val usd = repository.findCurrencyRate("USD")
             val aed = repository.findCurrencyRate("AED")
-            val conversionRate = usd?.toConversionRate(5.0,aed!!)
-            assertThat(conversionRate).isEqualTo(ConversionRates("AED","USD",1.3612776407424951))
+            val conversionRate = usd?.toConversionRate(5.0, aed!!)
+            assertThat(conversionRate).isEqualTo(ConversionRates("AED", "USD", 1.3612776407424951))
         }
     }
 

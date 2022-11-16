@@ -1,14 +1,13 @@
 package com.app.currencyconverter.common.ui
 
-import android.content.res.Configuration
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import com.app.currencyconverter.datasource.remote.common.Message
 import com.app.currencyconverter.common.callbacks.NetworkStateDialogCallback
 import com.app.currencyconverter.common.callbacks.ProgressDialogCallback
 import com.app.currencyconverter.common.extensions.hideProgress
 import com.app.currencyconverter.common.extensions.showProgress
+import com.app.currencyconverter.datasource.remote.common.Message
 
 abstract class BaseFragment : Fragment(), ProgressDialogCallback, NetworkStateDialogCallback {
 
@@ -22,16 +21,6 @@ abstract class BaseFragment : Fragment(), ProgressDialogCallback, NetworkStateDi
 
     override fun onProgressDialogCancelled() {
 
-    }
-
-    public fun isUsingNightModeResources(): Boolean {
-        return when (resources.configuration.uiMode and
-                Configuration.UI_MODE_NIGHT_MASK) {
-            Configuration.UI_MODE_NIGHT_YES -> true
-            Configuration.UI_MODE_NIGHT_NO -> false
-            Configuration.UI_MODE_NIGHT_UNDEFINED -> false
-            else -> false
-        }
     }
 
     fun toast(message: String) {
@@ -62,7 +51,6 @@ abstract class BaseFragment : Fragment(), ProgressDialogCallback, NetworkStateDi
 
         }
     }
-
 
 
     fun onLoading(isLoading: Boolean) {

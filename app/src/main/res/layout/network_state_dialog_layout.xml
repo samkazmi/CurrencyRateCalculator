@@ -58,7 +58,7 @@
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="@{error}"
-                android:textColor="@color/black"
+                android:textColor="?colorOnPrimary"
                 tools:text="Unable to connect to internet please try again in few minutes" />
 
             <Button

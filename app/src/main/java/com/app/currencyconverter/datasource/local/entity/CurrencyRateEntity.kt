@@ -19,7 +19,7 @@ import com.app.currencyconverter.datasource.models.ConversionRates
 )
 data class CurrencyRateEntity(
     @PrimaryKey val code: String,
-    @NonNull val rate: Double
+    val rate: Double
 ) {
     fun toConversionRate(
         selectedAmount: Double,

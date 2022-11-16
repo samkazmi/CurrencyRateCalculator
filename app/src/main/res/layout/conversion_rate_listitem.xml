@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@{vm.amount}"
-                android:textColor="@color/purple_500"
+                android:textColor="?colorPrimary"
                 android:textSize="16sp"
                 tools:text="Amount" />
 
@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{vm.currencyCode}"
                 android:textSize="12sp"
+                android:textColor="?colorOnPrimary"
                 tools:text="Currency" />
 
         </LinearLayout>

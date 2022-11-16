@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:text="@string/currency_converter"
-            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +50,7 @@
             app:layout_constraintTop_toBottomOf="@+id/message"
             app:placeholderText="10.00"
             app:prefixText="@{vm.selectedCurrency}"
-            app:prefixTextColor="@color/purple_500"
+            app:prefixTextColor="?colorPrimary"
             app:startIconContentDescription="@string/currency_amount"
             app:startIconDrawable="@drawable/ic_amount">
 
@@ -73,7 +72,6 @@
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:text="@string/select_currency"
-            android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
